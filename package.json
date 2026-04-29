@@ -33,7 +33,7 @@
     "build": "npm run build --workspaces",
     "typecheck": "npm run typecheck --workspaces",
     "lint": "npm run lint --workspaces",
-    "test": "jest",
+    "test": "jest --config jest.config.js",
     "docs": "typedoc",
     "start": "npm run build --workspaces",
     "size": "size-limit",
@@ -73,3 +73,4 @@
     "ethers": "^6.16.0"
   }
 }
+
