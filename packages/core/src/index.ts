@@ -1,8 +1,17 @@
 // Client
-export { StellarClient } from './client/stellarClient';
+export { StellarClient, HYDRATION_STATE_VERSION } from './client/stellarClient';
 export { AxionveraClient } from './client/axionveraClient';
 export { FaucetClient } from './client/faucetClient';
-export type { StellarClientOptions } from './client/stellarClient';
+export type {
+  StellarClientOptions,
+  PendingTransaction,
+  TrackedTransaction,
+  SerializedPendingTransaction,
+  ExportedState,
+  TrackTransactionOptions,
+  SimulationContext,
+  SerializableValue,
+} from './client/stellarClient';
 export type { AxionveraClientConfig } from './client/axionveraClient';
 export type { LogLevel, CustomLogger } from './utils/logger';
 
@@ -46,6 +55,9 @@ export type { BumpTransactionFeeOptions } from './utils/transactionBuilder';
 export { getDefaultRpcUrl, getNetworkPassphrase, resolveNetworkConfig } from './utils/networkConfig';
 export { generateTransactionURI, generatePayURI } from './utils/sep7';
 export { decodeXdrBase64, clearXdrCache, getXdrCacheSize } from './utils/xdrCache';
+export { getRequiredSigners } from './utils/getRequiredSigners';
+export { parseEvents, decodeSorobanSymbol } from './utils/soroban';
+export type { ParsedEvent, ParseEventsOptions, DecodedTopic } from './utils/soroban';
 export {
   addAuthEntry,
   buildSorobanAddressAuthEntry,
@@ -54,22 +66,31 @@ export {
 export type { SorobanAuthEntry, BuildAddressAuthEntryParams, BuildSourceAuthEntryParams } from './utils/sorobanAuth';
 
 // Errors
-export { 
-  AxionveraError, 
-  NetworkError, 
-  AuthenticationError, 
-  RateLimitError, 
+export {
+  AxionveraError,
+  NetworkError,
+  AuthenticationError,
+  RateLimitError,
   ValidationError,
   StellarRpcNetworkError,
   StellarRpcResponseError,
   StellarRpcTimeoutError,
+  InsecureNetworkError,
   TransactionTimeoutError,
   WalletNotInstalledError,
   FaucetRateLimitError,
+  InvalidSignatureError,
+  RPCValidationMismatchError,
   DeviceLockedError,
   UserRejectedError,
+  ContractRevertError,
+  TransactionTimeoutError,
   toAxionveraError
 } from './errors/axionveraError';
+export type { RPCValidationMismatchErrorOptions } from './errors/axionveraError';
+
+// RPC schema types
+export type { ValidatedGetHealthResponse, ValidatedGetTransactionResponse } from './utils/rpcSchemas';
 
 // Transaction Signing
 export { TransactionSigner, EnhancedTransactionBuilder, TransactionSimulator } from './transaction';
